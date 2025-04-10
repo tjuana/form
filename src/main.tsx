@@ -1,18 +1,21 @@
 import React from 'react'
 import ReactDOM from 'react-dom/client'
-import { BrowserRouter } from 'react-router-dom'
+import { PersistGate } from 'redux-persist/integration/react'
+
 import { App } from './App'
-import { AuthProvider } from './context/AuthContext'
-import { Toaster } from 'sonner'
+
+import { persistor } from './store'
+import { Provider } from 'react-redux'
+import { store } from './store'
+
 import './index.css'
 
 ReactDOM.createRoot(document.getElementById('root')!).render(
   <React.StrictMode>
-    <BrowserRouter future={{ v7_startTransition: true, v7_relativeSplatPath: true }}>
-      <AuthProvider>
-        <App />
-        <Toaster position="bottom-center" richColors closeButton />
-      </AuthProvider>
-    </BrowserRouter>
+    <Provider store={store}>
+      <PersistGate loading={null} persistor={persistor}>
+          <App />
+      </PersistGate>
+    </Provider>
   </React.StrictMode>
 )

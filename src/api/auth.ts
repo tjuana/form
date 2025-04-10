@@ -1,23 +1,23 @@
+import { users, MockUser } from './users'
+
 export type LoginPayload = {
   email: string
   password: string
 }
 
-export class AuthError extends Error {
-  constructor(message: string) {
-    super(message)
-    this.name = 'AuthError'
-  }
-}
+const delay = (ms: number) =>
+  new Promise((resolve) => setTimeout(resolve, ms))
 
-export const login = async ({ email, password }: LoginPayload): Promise<void> => {
-  return new Promise((resolve, reject) => {
-    setTimeout(() => {
-      if (email === 'test@example.com' && password === 'password123') {
-        resolve()
-      } else {
-        reject(new AuthError('Invalid email or password'))
-      }
-    }, 1000)
-  })
+export const login = async ({ email, password }: LoginPayload): Promise<MockUser> => {
+  await delay(713)
+
+  const user = users.find(
+    (u) => u.email === email && u.password === password
+  )
+
+  if (!user) {
+    throw new Error('Invalid email or password')
+  }
+
+  return user
 }

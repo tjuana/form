@@ -1,20 +1,12 @@
-import { Routes, Route } from 'react-router-dom'
-import { LoginForm } from './pages/LoginForm'
-import { Dashboard } from './pages/Dashboard'
-import { ProtectedRoute } from './routes/ProtectedRoute'
+import { BrowserRouter } from "react-router-dom"
+import AppRoutes from "./routes/Router"
+import { Toaster } from "sonner"
 
 export const App = () => {
   return (
-    <Routes>
-      <Route path="/" element={<LoginForm />} />
-      <Route
-        path="/dashboard"
-        element={
-          <ProtectedRoute>
-            <Dashboard />
-          </ProtectedRoute>
-        }
-      />
-    </Routes>
+    <BrowserRouter future={{ v7_startTransition: true, v7_relativeSplatPath: true }}>
+      <Toaster position="bottom-center" richColors closeButton />
+      <AppRoutes />
+    </BrowserRouter>
   )
 }

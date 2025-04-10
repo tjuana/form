@@ -1,31 +1,31 @@
 import React, { useState, useEffect } from 'react'
-import { Input } from '../components/Input'
 import { Button } from '../components/Button'
-import { useLiveValidation, validateEmail, validatePassword } from '../hooks/useValidation'
+import { useLiveValidation, validateEmail, validatePassword } from '../features/auth/hooks/useValidation'
 import { toast } from '../lib/toast'
 import { useNavigate } from 'react-router-dom'
-import { useAuth } from '../context/AuthContext'
-import { useFormValues } from '../hooks/useFormValues'
+import { useAppDispatch, useAppSelector } from '../store/hooks'
+import { login } from '../api/auth'
+import { setUser } from '../store/authSlice'
+import { LoginFields } from '../features/auth/ui/LoginFields'
+import { useLoginFields } from '../features/auth/hooks/useLoginFields'
 
-export const LoginForm = () => {
+
+const LoginForm = () => {
   const [isSubmitting, setIsSubmitting] = useState(false)
+  const dispatch = useAppDispatch()
+  const isLoggedIn = useAppSelector((state) => state.auth.user !== null)
 
-  const { values, handleChange } = useFormValues({
-    email: '',
-    password: '',
-  })
-
+  const { values, handleChange, errors, onBlurs } = useLoginFields()
   const { email, password } = values
 
   const emailValidation = useLiveValidation(email, validateEmail)
   const passwordValidation = useLiveValidation(password, validatePassword)
 
-  const { login: loginUser, isLoggedIn } = useAuth()
   const navigate = useNavigate()
 
   useEffect(() => {
     if (isLoggedIn) {
-      navigate('/dashboard', { replace: true })
+      navigate('/dashboard')
     }
   }, [isLoggedIn, navigate])
 
@@ -39,13 +39,16 @@ export const LoginForm = () => {
       toast.error('Fix validation errors before submitting')
       return
     }
-
+  
     setIsSubmitting(true)
+  
     try {
-      await loginUser({ email, password })
+      const user = await login({ email, password })
+      dispatch(setUser(user))
       toast.success('Login successful')
-    } catch {
-      toast.error('Login failed. Try again.')
+    } catch (err) {
+      toast.error(err instanceof Error ? err.message : 'Login failed')
+      return
     } finally {
       setIsSubmitting(false)
     }
@@ -62,27 +65,11 @@ export const LoginForm = () => {
         Sign In
       </h2>
 
-      <Input
-        id="email"
-        label="Email"
-        value={email}
-        onChange={handleChange('email')}
-        error={emailValidation.error}
-        type="email"
-        autoComplete="email"
-        onBlur={emailValidation.onBlur}
-        autoFocus
-      />
-
-      <Input
-        id="password"
-        label="Password"
-        value={password}
-        onChange={handleChange('password')}
-        error={passwordValidation.error}
-        type="password"
-        autoComplete="current-password"
-        onBlur={passwordValidation.onBlur}
+      <LoginFields
+        values={values}
+        handleChange={handleChange}
+        errors={errors}
+        onBlurs={onBlurs}
       />
 
       <Button type="submit" loading={isSubmitting} fullWidth ariaLabel="Login">
@@ -91,3 +78,5 @@ export const LoginForm = () => {
     </form>
   )
 }
+
+export default LoginForm

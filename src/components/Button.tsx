@@ -9,6 +9,7 @@ type ButtonProps = {
   loading?: boolean
   fullWidth?: boolean
   ariaLabel?: string
+  className?: string
 }
 
 export const Button: React.FC<ButtonProps> = ({
@@ -19,6 +20,7 @@ export const Button: React.FC<ButtonProps> = ({
   loading = false,
   fullWidth = false,
   ariaLabel,
+  className,
 }) => {
   return (
     <button
@@ -29,7 +31,8 @@ export const Button: React.FC<ButtonProps> = ({
         'px-4 py-2 rounded-md text-white text-sm font-medium transition-all duration-150',
         'bg-blue-600 hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-400',
         'disabled:opacity-50 disabled:cursor-not-allowed',
-        fullWidth && 'w-full'
+        fullWidth && 'w-full',
+        className
       )}
       aria-disabled={disabled || loading}
       aria-busy={loading}
