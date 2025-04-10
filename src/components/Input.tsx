@@ -30,7 +30,7 @@ export const Input: React.FC<InputProps> = ({
   const shouldFloat = isFocused || value.length > 0
 
   return (
-    <div className="mb-6 relative">
+    <div className="mb-4 relative">
       <input
         id={id}
         type={type}
@@ -65,11 +65,12 @@ export const Input: React.FC<InputProps> = ({
       >
         {label}
       </label>
-      {error && (
-        <p id={`${id}-error`} className="text-sm text-red-500 mt-1">
-          {error}
-        </p>
-      )}
+      <p
+        id={`${id}-error`}
+        className={clsx('text-sm mt-1', error ? 'text-red-500' : 'invisible h-5')}
+      >
+        {error ?? 'placeholder'}
+      </p>
     </div>
   )
 }

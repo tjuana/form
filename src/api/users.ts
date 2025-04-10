@@ -5,7 +5,7 @@ export type MockUser = {
 }
 
 export const users: MockUser[] = [
-  { email: 'test@example.com', password: 'password123', name: 'Test User' },
-  { email: 'test2@example.com', password: 'password123', name: 'Test User 2' },
-  { email: 'admin@example.com', password: 'admin123', name: 'Admin User' },
+  { email: 'test@example.com', password: 'StrongPass1!', name: 'Test User' },
+  { email: 'test2@example.com', password: 'StrongPass2!', name: 'Test User 2' },
+  { email: 'admin@example.com', password: 'StrongPass3!', name: 'Admin User' },
 ]

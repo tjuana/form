@@ -57,7 +57,7 @@ const LoginForm = () => {
   return (
     <form
       onSubmit={handleSubmit}
-      className="flex flex-col max-w-md mx-auto container border border-gray-300 rounded-md p-4 shadow-md mt-20"
+      className="flex flex-col max-w-sm md:max-w-md mx-auto container border border-gray-300 rounded-md p-4 shadow-md mt-20"
       role="form"
       noValidate
     >

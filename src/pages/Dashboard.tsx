@@ -25,7 +25,7 @@ const Dashboard = () => {
   }
 
   return (
-    <div className="max-w-md mx-auto text-center mt-20 flex flex-col gap-4 items-center border border-gray-300 rounded-md p-4 shadow-md">
+    <div className="max-w-sm md:max-w-md mx-auto text-center mt-20 flex flex-col gap-4 items-center border border-gray-300 rounded-md p-4 shadow-md">
       <h1 className="text-xl font-semibold">Welcome, {user?.name}!</h1>
       <h2 className="text-lg font-semibold">with email {user?.email}</h2>
       <p className="text-sm text-gray-500">if you want to logout, click the button below</p>
