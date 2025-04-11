@@ -13,6 +13,20 @@ A simple login form project built with **React**, **Redux Toolkit**, **React Rou
 
 ---
 
+## 🧪 Mock Users
+
+You can log in using the following test credentials:
+
+| Email              | Password       | Name        |
+|-------------------|----------------|-------------|
+| test@example.com  | StrongPass1!   | Test User   |
+| test2@example.com | StrongPass2!   | Test User 2 |
+| admin@example.com | StrongPass3!   | Admin User  |
+
+You can find them inside `src/mocks/users.ts`.
+
+---
+
 ## 🔧 Stack
 
 - [React 19](https://react.dev/)
@@ -107,20 +121,6 @@ To test the form easily, you can:
   👉 `https://tjuana.github.io/form/?demo=1`
 
 ---
-
----
-
-## 🧪 Mock Users
-
-You can log in using the following test credentials:
-
-| Email              | Password       | Name        |
-|-------------------|----------------|-------------|
-| test@example.com  | StrongPass1!   | Test User   |
-| test2@example.com | StrongPass2!   | Test User 2 |
-| admin@example.com | StrongPass3!   | Admin User  |
-
-You can find them inside `src/mocks/users.ts`.
 
 ## 📌 TODOs
 
