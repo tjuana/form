@@ -1,54 +1,137 @@
-# React + TypeScript + Vite
+# 🧪 login-form
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A simple login form project built with **React**, **Redux Toolkit**, **React Router**, and **Vitest**. The project features a minimalistic form with validation, routing between pages, global state with Redux, and full test coverage. Deployed via **GitHub Pages**.
 
-Currently, two official plugins are available:
+## ✨ Features
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+- ✅ Login form with email & password
+- ✅ Basic form validation
+- ✅ Page routing with React Router v6
+- ✅ State management with Redux Toolkit
+- ✅ Unit and integration tests with Vitest & Testing Library
+- ✅ GitHub Pages deployment
 
-## Expanding the ESLint configuration
+---
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+## 🔧 Stack
 
-```js
-export default tseslint.config({
-  extends: [
-    // Remove ...tseslint.configs.recommended and replace with this
-    ...tseslint.configs.recommendedTypeChecked,
-    // Alternatively, use this for stricter rules
-    ...tseslint.configs.strictTypeChecked,
-    // Optionally, add this for stylistic rules
-    ...tseslint.configs.stylisticTypeChecked,
-  ],
-  languageOptions: {
-    // other options...
-    parserOptions: {
-      project: ['./tsconfig.node.json', './tsconfig.app.json'],
-      tsconfigRootDir: import.meta.dirname,
-    },
-  },
+- [React 19](https://react.dev/)
+- [Redux Toolkit](https://redux-toolkit.js.org/)
+- [React Router v6.30](https://reactrouter.com/en/main)
+- [Vitest](https://vitest.dev/) + [Testing Library](https://testing-library.com/)
+- [Tailwind CSS](https://tailwindcss.com/)
+- [Vite](https://vitejs.dev/)
+- [GitHub Pages](https://pages.github.com/)
+
+---
+
+## 📂 Project Structure
+
+```
+src/
+├── components/         # Reusable UI components (Input, Button, etc.)
+├── pages/              # LoginForm, Dashboard
+├── routes/             # AppRoutes (Routing logic)
+├── store/              # Redux store and slices
+├── tests/              # setupTests and test utilities
+├── hooks/              # Reusable hooks
+├── sceletons/          # Fallback skeleton for Suspense
+```
+
+---
+
+## 🚀 Getting Started
+
+```bash
+# Clone the repo
+git clone https://github.com/tjuana/form.git
+cd form
+
+# Install dependencies
+npm install
+
+# Run locally
+npm run dev
+```
+
+---
+
+## 🧪 Running Tests
+
+```bash
+# Run all tests
+npm run test
+
+# Watch mode
+npm run test:watch
+```
+
+Tests are located alongside components or in `src/routes/__tests__/` and cover:
+
+- AppRoutes
+- LoginForm rendering
+- Input & Button components
+- Dashboard
+- User state
+- Edge cases (loading, fallback)
+
+---
+
+## 🌍 Deployment
+
+The app is deployed to GitHub Pages:
+
+```bash
+npm run deploy
+```
+
+Make sure your `vite.config.ts` contains:
+
+```ts
+export default defineConfig({
+  base: '/form/', // Required for GitHub Pages
+  ...
 })
 ```
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+Check it live at: [https://tjuana.github.io/form](https://tjuana.github.io/form)
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
+---
 
-export default tseslint.config({
-  plugins: {
-    // Add the react-x and react-dom plugins
-    'react-x': reactX,
-    'react-dom': reactDom,
-  },
-  rules: {
-    // other rules...
-    // Enable its recommended typescript rules
-    ...reactX.configs['recommended-typescript'].rules,
-    ...reactDom.configs.recommended.rules,
-  },
-})
-```
+## 🔑 Demo Credentials
+
+To test the form easily, you can:
+
+- Use the placeholder hints
+- Or visit the demo link with credentials prefilled:  
+  👉 `https://tjuana.github.io/form/?demo=1`
+
+---
+
+---
+
+## 🧪 Mock Users
+
+You can log in using the following test credentials:
+
+| Email              | Password       | Name        |
+|-------------------|----------------|-------------|
+| test@example.com  | StrongPass1!   | Test User   |
+| test2@example.com | StrongPass2!   | Test User 2 |
+| admin@example.com | StrongPass3!   | Admin User  |
+
+You can find them inside `src/mocks/users.ts`.
+
+## 📌 TODOs
+
+- [ ] Add real auth API integration
+- [ ] Protect dashboard route
+- [ ] Add "Remember me" checkbox
+- [ ] Improve mobile UI
+
+---
+
+## 🧠 Author
+
+Made by [@tjuana](https://github.com/tjuana)  
+Feel free to ⭐ the repo or contribute!
