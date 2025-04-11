@@ -16,7 +16,7 @@ export const login = async ({ email, password }: LoginPayload): Promise<MockUser
   )
 
   if (!user) {
-    throw new Error('Invalid email or password, use /?demo=1 or /?demo=2 or /?demo=3 to login as Test User, Test User 2 or Admin User')
+    throw new Error('Invalid email or password, use /?demo=0 or /?demo=1 or /?demo=2 to login as Test User, Test User 2 or Admin User')
   }
 
   return user
