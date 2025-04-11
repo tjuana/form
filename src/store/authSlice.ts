@@ -1,5 +1,5 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit'
-import { MockUser } from '../api/users'
+import { MockUser } from '@api/users'
 
 type AuthState = {
   user: MockUser | null

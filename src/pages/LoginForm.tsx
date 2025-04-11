@@ -1,27 +1,34 @@
 import React, { useState, useEffect } from 'react'
-import { Button } from '../components/Button'
-import { useLiveValidation, validateEmail, validatePassword } from '../features/auth/hooks/useValidation'
-import { toast } from '../lib/toast'
-import { useNavigate } from 'react-router-dom'
-import { useAppDispatch, useAppSelector } from '../store/hooks'
-import { login } from '../api/auth'
-import { setUser } from '../store/authSlice'
-import { LoginFields } from '../features/auth/ui/LoginFields'
-import { useLoginFields } from '../features/auth/hooks/useLoginFields'
+import { useNavigate, useSearchParams } from 'react-router-dom'
 
+import { toast } from '@lib/toast'
+import { login } from '@api/auth'
+import { useLiveValidation, validateEmail, validatePassword } from '@features/auth/hooks/useValidation'
+import { LoginFields } from '@features/auth/ui/LoginFields'
+import { useLoginFields } from '@features/auth/hooks/useLoginFields'
+import { useAutofillDemoUser } from '@features/auth/hooks/useAutofillDemoUser'
+import { setUser } from '@store/authSlice'
+import { useAppDispatch, useAppSelector } from '@store/hooks'
+
+import { Button } from '@components/Button'
 
 const LoginForm = () => {
   const [isSubmitting, setIsSubmitting] = useState(false)
   const dispatch = useAppDispatch()
   const isLoggedIn = useAppSelector((state) => state.auth.user !== null)
-
-  const { values, handleChange, errors, onBlurs } = useLoginFields()
+  
+  const { values, handleChange, errors, onBlurs, setValue } = useLoginFields()
   const { email, password } = values
 
   const emailValidation = useLiveValidation(email, validateEmail)
   const passwordValidation = useLiveValidation(password, validatePassword)
 
   const navigate = useNavigate()
+
+  useAutofillDemoUser({
+    values,
+    setValue,
+  })
 
   useEffect(() => {
     if (isLoggedIn) {

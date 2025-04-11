@@ -1,9 +1,11 @@
 import { useNavigate } from 'react-router-dom'
-import { toast } from '../lib/toast'
-import { useAppDispatch, useAppSelector } from '../store/hooks'
-import { logout } from '../store/authSlice'
+
+import { toast } from '@lib/toast'
 import { useEffect } from 'react'
-import { UserCard } from '../components/UserCard'
+import { UserCard } from '@components/UserCard'
+
+import { logout } from '@store/authSlice'
+import { useAppDispatch, useAppSelector } from '@store/hooks'
 
 const Dashboard = () => {
   const user = useAppSelector((state) => state.auth.user)

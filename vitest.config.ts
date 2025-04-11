@@ -10,4 +10,16 @@ export default defineConfig({
     setupFiles: './src/tests/setupTests.ts',
     include: ['src/**/*.test.{ts,tsx}'],
   },
+  resolve: {
+    alias: {
+      '@': '/src',
+      '@api': '/src/api',
+      '@features': '/src/features',
+      '@pages': '/src/pages',
+      '@components': '/src/components',
+      '@lib': '/src/lib',
+      '@store': '/src/store',
+      '@sceletons': '/src/sceletons',
+    },
+  },
 })

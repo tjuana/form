@@ -2,7 +2,7 @@ import { useFormValues } from './useFormValues'
 import { useLiveValidation, validateEmail, validatePassword } from './useValidation'
 
 export const useLoginFields = () => {
-  const { values, handleChange } = useFormValues({
+  const { values, handleChange, setValue } = useFormValues({
     email: '',
     password: '',
   })
@@ -21,5 +21,6 @@ export const useLoginFields = () => {
       email: emailValidation.onBlur,
       password: passwordValidation.onBlur,
     },
+    setValue,
   }
 }

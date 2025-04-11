@@ -1,5 +1,5 @@
 import authReducer, { setUser, logout } from '../authSlice'
-import { MockUser } from '../../api/users'
+import { MockUser } from '@api/users'
 
 const mockUser: MockUser = {
   name: 'Vlad',

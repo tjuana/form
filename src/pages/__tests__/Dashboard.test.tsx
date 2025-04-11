@@ -4,9 +4,9 @@ import userEvent from '@testing-library/user-event'
 import Dashboard from '../Dashboard'
 import { Provider } from 'react-redux'
 import { configureStore } from '@reduxjs/toolkit'
-import authReducer from '../../store/authSlice'
+import authReducer from '@store/authSlice'
 import { MemoryRouter, useNavigate } from 'react-router-dom'
-import * as toastLib from '../../lib/toast'
+import * as toastLib from '@lib/toast'
 
 vi.mock('react-router-dom', async () => {
   const actual = await vi.importActual<typeof import('react-router-dom')>('react-router-dom')

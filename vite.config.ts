@@ -6,5 +6,17 @@ export default defineConfig({
   base: '/form/',
   server: {
     port: 7777,
-  }
+  },
+  resolve: {
+    alias: {
+      '@': '/src',
+      '@api': '/src/api',
+      '@components': '/src/components',
+      '@features': '/src/features',
+      '@lib': '/src/lib',
+      '@pages': '/src/pages',
+      '@store': '/src/store',
+      '@sceletons': '/src/sceletons',
+    },
+  },
 })

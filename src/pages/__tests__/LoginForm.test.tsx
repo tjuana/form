@@ -3,12 +3,12 @@ import { render, screen, waitFor } from '@testing-library/react'
 import userEvent from '@testing-library/user-event'
 import LoginForm from '../LoginForm'
 import { Provider } from 'react-redux'
-import { store } from '../../store'
+import { store } from '@store/index'
 import { MemoryRouter } from 'react-router-dom'
-import * as authApi from '../../api/auth'
-import { toast } from '../../lib/toast'
+import * as authApi from '@api/auth'
+import { toast } from '@lib/toast'
 
-vi.mock('../../lib/toast', () => ({
+vi.mock('@lib/toast', () => ({
   __esModule: true,
   toast: {
     error: vi.fn(),
@@ -20,8 +20,8 @@ beforeEach(() => {
   vi.clearAllMocks()
 })
 
-vi.mock('../../api/auth', async () => {
-  const actual = await vi.importActual<typeof import('../../api/auth')>('../../api/auth')
+vi.mock('@api/auth', async () => {
+  const actual = await vi.importActual<typeof import('@api/auth')>('@api/auth')
   return {
     ...actual,
     login: vi.fn(),
